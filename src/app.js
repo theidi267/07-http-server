@@ -8,12 +8,6 @@ const bodyParser = require('./lib/parse-body');
 
 const requestHandler = (req,res) => {
 
-  // Take a look here if you're interested to see what some parts of the request object are.
-  // console.log(req.method);
-  // console.log(req.headers);
-  // console.log(req.url)
-
-  // In all cases, parse the URL
   requestParser.execute(req);
 
     if ( req.method === 'GET' ) {
