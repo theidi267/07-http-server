@@ -12,12 +12,16 @@ const requestHandler = (req,res) => {
 
   requestParser.execute(req);
 
-  if ( req.method === 'GET' ) {
+  if ( req.method === 'GET' && req.url.pathname === '/') {
     fs.readFile('index.html', (err, data) => { 
+      if (err) throw err;
+
+      let result = data.toString().replace(/Change Content/, req.url.query.that);
+
       res.setHeader('Content-Type', 'text/html');
       res.statusCode = 200;
       res.statusMessage = 'OK';
-      res.write(data.toString());
+      res.write(result);
       res.end();
       return;
     });
