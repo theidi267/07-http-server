@@ -1,13 +1,15 @@
+
 'use strict';
 
-const bodyParser = module.exports = {};
+let bodyParser = module.exports = {};
 
 bodyParser.execute = (req) => {
 
   return new Promise((resolve, reject) => {
+    
     let text = '';
 
-    req.on('data', (buffer) => {
+    req.on('data', buffer => {
       text = text + buffer.toString();
     });
 
@@ -16,11 +18,9 @@ bodyParser.execute = (req) => {
         req.body = JSON.parse(text);
         resolve(req);
       }
-      catch (err) {
+      catch(err) {
         reject(err);
       }
-
     });
-
   });
 };
