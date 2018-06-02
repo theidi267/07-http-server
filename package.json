@@ -4,6 +4,7 @@
   "description": "![cf](https://i.imgur.com/7v5ASc8.png) Lab 07: Vanilla HTTP Server ======",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint **/*.js",
     "test": "jest --verbose --coverage",
     "start": "node index.js"
   },
@@ -21,5 +22,6 @@
     "dotenv": "^5.0.1",
     "eslint": "^4.19.1",
     "jest": "^22.4.4"
-  }
+  },
+  "devDependencies": {}
 }

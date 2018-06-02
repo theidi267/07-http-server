@@ -2,6 +2,8 @@
 
 const http = require('http');
 
+const fs = require('fs');
+
 const requestParser = require('./lib/parse-request');
 
 const bodyParser = require('./lib/parse-body');
@@ -10,16 +12,16 @@ const requestHandler = (req,res) => {
 
   requestParser.execute(req);
 
-    if ( req.method === 'GET' ) {
-      fs.readfile('index.html', (err, data) => { 
-        res.setHeader('Content-Type', 'text/html');
-        res.statusCode = 200;
-        res.statusMessage = 'OK';
-        res.write(data.tostring());
-        res.end();
-        return;
-      })
-    }
+  if ( req.method === 'GET' ) {
+    fs.readfile('index.html', (err, data) => { 
+      res.setHeader('Content-Type', 'text/html');
+      res.statusCode = 200;
+      res.statusMessage = 'OK';
+      res.write(data.tostring());
+      res.end();
+      return;
+    });
+  }
 
   else if ( req.method === 'POST' ) {
 
