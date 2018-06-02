@@ -20,7 +20,6 @@ describe('Request Parser', () => {
     });
 
     it('given a URL, returns an object', () => {
-      let expected = {};
       let req = { url: 'http://www.here.com/path/to/foo' };
       requestParser.execute(req);
       expect(typeof req.url).toBe('object');
